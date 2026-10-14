@@ -1,0 +1,4 @@
+title = "minilab-agt-verify-gate"
+
+[extend]
+useDefault = true

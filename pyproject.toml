@@ -1,0 +1,36 @@
+[project]
+name = "minilab-agt-verify-gate"
+version = "0.1.0"
+description = "SkilledDragon minilab: AGT doctor + keyless agent-os governance parity gate"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "SkilledDragon LLC", email = "hello@skilleddragon.com" }]
+requires-python = ">=3.11"
+dependencies = [
+    "agent-governance-toolkit[full]==4.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "ruff>=0.8.0",
+    "pip-audit>=2.7.0",
+    "pre-commit>=4.0.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["tests", "scripts"]
+extend-exclude = ["vendor", "docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

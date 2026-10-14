@@ -1,0 +1,15 @@
+# Transitive cryptography pin from agent-governance-toolkit[full]==4.1.0
+# (agent-governance-toolkit-core requires cryptography>=46.0.7,<49.0).
+# Re-evaluate when bumping the AGT PyPI pin.
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-3552"
+reason = "Pinned AGT 4.1.0 caps cryptography<49; not introduced by this lab"
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-3553"
+reason = "Pinned AGT 4.1.0 caps cryptography<49; not introduced by this lab"
+
+[[IgnoredVulns]]
+id = "PYSEC-2026-3554"
+reason = "Pinned AGT 4.1.0 caps cryptography<49; not introduced by this lab"
