@@ -1,0 +1,46 @@
+{
+  "lab": "minilab-agt-verify-gate",
+  "sha": "b9f356e2e1b9c4bf50a5000111001085d977d3b3",
+  "sha_short": "b9f356e",
+  "pin": "47abed7446d47e74cfa76d01a5913bb873ffcad9",
+  "pin_short": "47abed74",
+  "pypi": {
+    "agent-governance-toolkit[full]": "4.1.0"
+  },
+  "upstream": "microsoft/agent-governance-toolkit",
+  "keyless": true,
+  "generated_at": "2026-10-14T10:47:39Z",
+  "host": "darwin",
+  "note": "Local keyless macOS: agt doctor exit 0, 2 pytest (doctor + reference sha256), skills-layout OK. Upstream agent-os parity 38 passed in CI run 38549271466 (upstream-parity 217 s). Reference docs/upstream-agt-ci.reference.yml sha256 29f15fdd…91d7 (1482 lines).",
+  "checks": {
+    "uv_sync": "pass",
+    "agt_doctor": "pass",
+    "pytest_local": { "passed": 2, "failed": 0, "files": ["test_agt_doctor.py", "test_reference_ci_hash.py"] },
+    "check_skills": "pass",
+    "skill_mirrors_absent": "pass",
+    "reference_ci_sha256": "29f15fddf7fe40cb1940ea0ac35503e92ae8e8341821e629deca6d2314fb91d7",
+    "reference_ci_lines": 1482,
+    "upstream_parity": "CI"
+  },
+  "ci": {
+    "run_id": 38549271466,
+    "url": "https://github.com/SkilledDragonCorp/minilab-agt-verify-gate/actions/runs/38549271466",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "b9f356e2e1b9c4bf50a5000111001085d977d3b3",
+    "jobs": {
+      "lab": { "conclusion": "success", "duration_s": 21 },
+      "upstream-parity": { "conclusion": "success", "duration_s": 217 },
+      "security": { "conclusion": "success", "duration_s": 8 }
+    },
+    "upstream_parity_pytest": { "passed": 38, "failed": 0, "duration_s": 1.2 }
+  },
+  "upstream_steps": [
+    "Install local sibling dependencies (upstream CI)",
+    "Install OPA (ACS-backed Python policy runtime)",
+    "Build native ACS SDK",
+    "pip install --no-cache-dir -e \".[dev]\" (agent-os)",
+    "pytest tests/test_governance_parity.py tests/test_adapter_mediation_contract.py -v --tb=short"
+  ],
+  "notion_status": "Shipped"
+}

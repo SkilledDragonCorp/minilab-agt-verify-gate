@@ -37,3 +37,6 @@ vendor/
 .next/
 .turbo/
 agt-evidence.json
+agentmesh.yaml
+integrity.json
+policies/
