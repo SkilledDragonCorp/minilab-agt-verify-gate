@@ -89,10 +89,9 @@ jobs:
         run: uv sync --frozen --group dev
 
       - name: Keyless agent-os parity
-        run: |
-          # Ensure pip/pytest target the uv environment for editable sibling installs.
-          source .venv/bin/activate
-          bash scripts/run-keyless-parity.sh
+        # Script creates an isolated venv under vendor/.parity-venv (avoids
+        # colliding with the lab's PyPI AGT 4.1.0 pin).
+        run: bash scripts/run-keyless-parity.sh
         env:
           DO_NOT_TRACK: "1"
           DISABLE_TELEMETRY: "1"

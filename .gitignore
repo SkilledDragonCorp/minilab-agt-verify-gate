@@ -32,6 +32,7 @@ coverage.xml
 logs/
 .DS_Store
 vendor/
+vendor/.parity-venv/
 *.egg-info/
 .eggs/
 .next/

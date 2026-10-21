@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 # Keyless agent-os conformance — sibling installs copied from upstream ci.yml
-# at 47abed7446d47e74cfa76d01a5913bb873ffcad9 (job python-packages,
-# steps: Install local sibling dependencies / Install OPA / Build native ACS SDK /
+# at 47abed7446d47e74cfa76d01a5913bb873ffcad9 (python-packages job steps:
+# Install local sibling dependencies / Install OPA / Build native ACS SDK /
 # Install agent-os). Final pytest matches the Conformance step verbatim.
+#
+# Uses a fresh venv so lab PyPI pin agent-governance-toolkit==4.1.0 cannot
+# collide with the pin-tree editables (core 5.0.0).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PIN_SHA="47abed7446d47e74cfa76d01a5913bb873ffcad9"
 VENDOR="${ROOT}/vendor/agent-governance-toolkit"
+PARITY_VENV="${ROOT}/vendor/.parity-venv"
 
 bash "${ROOT}/scripts/fetch-upstream.sh"
 cd "${VENDOR}"
@@ -15,6 +19,12 @@ test "$(git rev-parse HEAD)" = "${PIN_SHA}"
 
 export DO_NOT_TRACK=1
 export DISABLE_TELEMETRY=1
+
+rm -rf "${PARITY_VENV}"
+python3 -m venv "${PARITY_VENV}"
+# shellcheck disable=SC1091
+source "${PARITY_VENV}/bin/activate"
+python -m pip install --upgrade pip setuptools wheel
 
 # ── Install local sibling dependencies (upstream ci.yml, verbatim) ──────
 pip install --no-cache-dir --no-deps -e agent-governance-python/agent-governance-toolkit-core
